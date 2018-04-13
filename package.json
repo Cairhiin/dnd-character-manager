@@ -1,0 +1,32 @@
+{
+  "name": "example-create-react-app-express",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server/server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "falcor": "^0.1.16",
+    "falcor-express": "^0.1.2",
+    "falcor-http-datasource": "^0.1.3",
+    "falcor-router": "^0.2.12",
+    "mongoose": "^4.4.5",
+    "nodemon": "^1.17.3",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1",
+    "rx": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.6.5",
+    "babel-polyfill": "6.6.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "concurrently": "^3.5.0"
+  }
+}
