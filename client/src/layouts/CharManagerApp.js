@@ -35,8 +35,8 @@ class CharManagerApp extends Component {
     console.log(this.props);
     let charJSX = [];
 
-    for (let charKey in this.props) {
-      const charDetails = this.props[charKey];
+    for (let charKey in this.props.character) {
+      const charDetails = this.props.character[charKey];
       const currentCharJSX = (
         <div key = { charKey }>
           <h2>{ charDetails.name }</h2>

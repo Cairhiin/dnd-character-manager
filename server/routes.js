@@ -1,30 +1,10 @@
-import mongoose from 'mongoose';
+import configMongoose from './configMongoose';
+import sessionRoutes from './routesSession';
+const Character = configMongoose.Character;
 
-mongoose.connect('mongodb://localhost/local');
-
-const characterSchema = {
-  name: String,
-  level: Number,
-  className: String,
-  race: String,
-  weight: Number,
-  height: Number,
-  alignment: String,
-  attributes: {
-    strength: Number,
-    dexterity: Number,
-    constitution: Number,
-    intellect: Number,
-    wisdom: Number,
-    charisma: Number
-  },
-  deity: String,
-  feats: [{ 'id': String }],
-  skills: [{ 'skill': String, 'score': Number }]
-}
-const Character = mongoose.model('Character', characterSchema, 'characters');
-
-export const CharManagerAppRoutes = [{
+export const CharManagerAppRoutes = [
+...sessionRoutes,
+{
   route: 'characters.length',
   get: () => Character.count({}, (err, count) => count)
       .then((charactersCountInDB) => {
