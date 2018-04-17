@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import characterActions from '../actions/character';
 import falcorModel from '../falcorModel';
+import { List, ListItem } from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import {
+  blueGrey500
+} from 'material-ui/styles/colors';
 
 const mapStateToProps = (state) => ({
   ...state
@@ -25,31 +30,48 @@ class CharManagerApp extends Component {
 
     const characters = await falcorModel
       .get(['characters', { from: 0, to: charactersLength - 1 },
-        ['id', 'name', 'level', 'className']])
+        ['_id', 'name', 'level', 'className', 'attributes', 'alignment', 'deity']])
       .then((charRes) => charRes.json.characters);
 
     this.props.characterActions.charactersList(characters);
   }
 
   render() {
-    console.log(this.props);
     let charJSX = [];
-
     for (let charKey in this.props.character) {
-      const charDetails = this.props.character[charKey];
-      const currentCharJSX = (
-        <div key = { charKey }>
-          <h2>{ charDetails.name }</h2>
-          <h3>LVL { charDetails.level } { charDetails.className }</h3>
-        </div>
+      let charDetails = this.props.character[charKey];
+      let primaryTextJSX = (
+        <p>
+          <span style = {{ fontWeight: 700, color: blueGrey500, fontSize: 16 }}> { charDetails.name }</span>
+          &nbsp;level&nbsp;{ charDetails.level }&nbsp;{ charDetails.className }&nbsp;of&nbsp;{charDetails.deity}
+          &nbsp;({ charDetails.alignment })
+        </p>
+      );
+      let currentCharJSX = (
+        <ListItem
+          primaryText = { primaryTextJSX }
+          secondaryText  = {
+            <p>
+              STR { charDetails.attributes.strength }&nbsp;
+              | DEX { charDetails.attributes.dexterity }&nbsp;
+              | CON { charDetails.attributes.constitution }&nbsp;
+              | INT { charDetails.attributes.intellect }&nbsp;
+              | WIS { charDetails.attributes.wisdom }&nbsp;
+              | CHA { charDetails.attributes.charisma }
+            </p>
+          }
+          secondaryTextLines = {1}
+        />
       );
       charJSX.push(currentCharJSX);
     }
 
     return (
       <div>
-        <h1>Character Manager App</h1>
-        { charJSX }
+        <List>
+          <Subheader style = {{ fontSize: 16 }}>Newest Characters</Subheader>
+          { charJSX }
+        </List>
       </div>
     );
   }
