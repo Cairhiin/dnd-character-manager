@@ -2,7 +2,7 @@ import configMongoose from './configMongoose';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import jwtSecret from './configSecret';
-const User = configMongoose.user;
+const User = configMongoose.User;
 
 export default [
   {
@@ -60,6 +60,53 @@ export default [
         }
         return result;
       });
+    }
+  }, {
+    route: ['register'],
+    call: (callPath, args) => {
+      const newUserObj = args[0];
+      newUserObj.password = newUserObj.password + 'dndCharManApp';
+      newUserObj.password = crypto
+        .createHash('sha256')
+        .update(newUserObj.password)
+        .digest('hex');
+      const newUser = new User(newUserObj);
+      return newUser.save((err, data) => {
+        if (err) return err;
+      })
+        .then((newRes) => {
+          const newUserDetails = newRes.toObject();
+
+          // Handle successful user creation
+          if (newUserDetails._id) {
+            const newUserId = newUserDetails._id.toString();
+            return [
+              {
+                path: ['register', 'newUserId'],
+                value: newUserId
+              },
+              {
+                path: ['register', 'error'],
+                value: false
+              }
+            ];
+          } else {
+            
+            // Handle unsuccessful user creation
+            return [
+              {
+                path: ['register', 'newUserId'],
+                value: 'INVALID'
+              },
+              {
+                path: ['register', 'error'],
+                value: 'Registration failed - no id has been created'
+              }
+            ];
+          }
+          return;
+        })
+        .catch((reason) => console.error(reason));
     }
   }
 ];

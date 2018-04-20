@@ -1509,9 +1509,9 @@ forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
 
-form-data-to-object@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/form-data-to-object/-/form-data-to-object-0.1.0.tgz#b1ac7f0e2aba9bd6ad439bd76e1dc4e18b50bd4b"
+form-data-to-object@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/form-data-to-object/-/form-data-to-object-0.2.0.tgz#f7a8e68ddd910a1100a65e25ac6a484143ff8168"
 
 form-data@~2.1.1:
   version "2.1.4"
@@ -1521,11 +1521,11 @@ form-data@~2.1.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
-formsy-react@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/formsy-react/-/formsy-react-0.17.0.tgz#c3d010e2c998a9d689b46e97317f9b57753bd813"
+formsy-react@^0.19.0:
+  version "0.19.5"
+  resolved "https://registry.yarnpkg.com/formsy-react/-/formsy-react-0.19.5.tgz#760a57ac0113442e3df4c309c3638dd92957e78e"
   dependencies:
-    form-data-to-object "^0.1.0"
+    form-data-to-object "^0.2.0"
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -2947,13 +2947,9 @@ rx@2.3.24:
   version "2.3.24"
   resolved "https://registry.yarnpkg.com/rx/-/rx-2.3.24.tgz#14f950a4217d7e35daa71bbcbe58eff68ea4b2b7"
 
-rx@2.5.3, rx@~2.5.3:
+rx@2.5.3, rx@^2.5.3, rx@~2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/rx/-/rx-2.5.3.tgz#21adc7d80f02002af50dae97fd9dbf248755f566"
-
-rx@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
 rx@~2.3.24:
   version "2.3.25"

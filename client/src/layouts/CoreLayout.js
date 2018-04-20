@@ -67,12 +67,17 @@ class CoreLayout extends Component {
 
     return (
       <MuiThemeProvider muiTheme = { muiTheme }>
-        <AppBar
-          style = { appbarStyle }
-          title = 'D&D Character Manager'
-        />
-        <br />
-        { this.props.children }
+        <div>
+          <AppBar
+            style = { appbarStyle }
+            title = 'D&D Character Manager'
+          />
+          <br />
+          <span>
+            Links: <Link to = '/login'>Login</Link> | <Link to = '/register'>Register</Link> | <Link to = '/'>Home</Link> 
+          </span>
+          { this.props.children }
+        </div>
       </MuiThemeProvider>
     );
   }
